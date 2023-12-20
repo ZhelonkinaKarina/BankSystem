@@ -1,18 +1,18 @@
 package bank;
 
-public class Transaction {
-	// Змінні екземпляра класу
+class Transaction {
+	//Змінні екземпляра класу
 	private String transactionId;
     private String description;
 
-    // Конструктор
-    public Transaction(String transactionId, String description) {
+    //Конструктор
+    Transaction(String transactionId, String description) {
         this.transactionId = transactionId;
         this.description = description;
     }
 
-    // Void-метод
-    public void executeTransaction(Client client, double amount) {
+    //Void-метод
+    void executeTransaction(Client client, double amount) {
         double currentBalance = client.getBalance();
         if (currentBalance >= amount) {
             client.setBalance(currentBalance - amount);
@@ -20,5 +20,10 @@ public class Transaction {
         } else {
             System.out.println("Транзакція " + transactionId + ": Недостатньо коштів. Операцію перервано!");
         }
+    }
+    
+    //Перевантаження методу
+    static void printTransactionInfo(String transactionId, String description) {
+        System.out.println("ID транзикції : " + transactionId + ", Опис: " + description);
     }
 }
