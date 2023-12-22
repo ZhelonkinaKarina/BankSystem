@@ -11,9 +11,6 @@ class Main {
     client1.displayInfo();
     account1.displayInfo();
 
-    account1.deposit(15000.0);
-    transaction1.executeTransaction(client1, 11500.0);
-
     account1.displayInfo();
     
     Transaction.printTransactionInfo("T002", "Виведення коштів");  //Виклик статичного методу
@@ -35,15 +32,32 @@ class Main {
 
     //Виклик методу, що приймає екземпляр того ж класу в якості параметру
     account1.performOperations(account2);
+    
+    
+    //Виклик методу збільшення балансу удвічі
+    Account account = new Account("A123", "Вкладний (депозитний)", 20000.0);
+    account.setAndDoubleBalance(5000.0);
+    System.out.println("Оновлений баланс рахунку: " + account.getBalance());
+    
+    //Виклик закритих методів через допоміжні публічні методи
+    Account account8 = new Account("A123", "Вкладний (депозитний)", 20000.0); //Виклик методу посилкового типу
+    account.depositPublic(15000.0);	//Виведення інформації про оновлений об'єкт
 
-    //Виклик методу посилкового типу
-    Account updatedAccount = account1.updateAccount(25000.0);
+    Client client = new Client("Іван", 35, "Чоловіча", 50000.0); //Виклик рекурсивного методу
+    client.recursiveMethodPublic(3, "Застосування рекурсії");
 
-    //Виведення інформації про оновлений об'єкт
-    System.out.println("Оновлений баланс рахунку 1: " + updatedAccount.getBalance());
-	
-    //Виклик рекурсивного методу
-    Client client = new Client("Іван", 35, "Чоловіча", 50000.0);
-    client.recursiveMethod(3, "Застосування рекурсії");
+    Transaction transaction = new Transaction("T001", "Переказ коштів");
+    transaction.executeTransactionPublic(client, 11500.0);
+    
+    //Виклик статичних методів нового класу
+    AdditionalClass.firstStaticMethod();
+    AdditionalClass.secondStaticMethod();
+    
+    //Створення екземпляру класу
+    FinalVariablesClass finalVariablesClass = new FinalVariablesClass(3.14);
+
+    //Виклик методів
+    finalVariablesClass.firstMethod();
+    finalVariablesClass.secondMethod();
 	}
 }
