@@ -15,36 +15,76 @@ class Client {
         this.balance = balance;
     }
     
-    Client(String name, String sex, int age, double balance) {
+    //Методи з модифікатором доступу private
+    private double getBalance(int type) { //Перевизначення методу
+        if (type == 1) { // Додаткова логіка залежно від типу
+            return getBalance() * 0.85;  // Знижка для типу 1
+        } else {
+            return getBalance();
+        }
+    }
+
+    //Рекурсивний метод
+    private void recursiveMethod(int iterations, String message) {
+        if (iterations > 0) {
+            System.out.println(message);
+            recursiveMethod(iterations - 1, message);
+        }
+    }
+
+    //Допоміжні методи з модифікатором доступу public
+    public double getBalancePublic(int type) {
+        return getBalance(type);
+    }
+
+    public void recursiveMethodPublic(int iterations, String message) {
+        recursiveMethod(iterations, message);
+    }
+
+    //Модифікатори доступу та методи get() та set()
+    String getName() {
+        return name;
+    }
+
+    void setName(String name) {
         this.name = name;
-        this.sex = sex;
+    }
+
+    int getAge() {
+        return age;
+    }
+
+    void setAge(int age) {
         this.age = age;
-        this.balance = balance;
+    }
+
+    String getSex() {
+        return sex;
+    }
+
+    void setSex(String sex) {
+        this.sex = sex;
     }
     
 	//Типізований метод
-    double getBalance() {
-        return balance;
+   double getBalance() {
+       return balance;
     }
 
     //Void-методи
     void setBalance(double balance) {
         this.balance = balance;
     }
+    
+    //Метод, що дозволяє автоматично збільшувати значення balance удвічі
+    void setAndDoubleBalance(double balance) {
+        this.balance = balance * 2;
+    }
 
     void displayInfo() {
         System.out.println("Клієнт: " + name + ", Вік: " + age + ", Стать: " + sex + ", Баланс поточного рахунку: " + balance);
     }
     
-    //Перевизначення методу
-    double getBalance(int type) {
-        // Додаткова логіка залежно від типу
-        if (type == 1) {
-            return getBalance() * 0.85;  //Знижка для типу 1
-        } else {
-            return getBalance();
-        }
-    }
     
     //Перевизначення конструктора
     Client(String name, int age, String sex, double balance, boolean withDiscount) {
@@ -75,11 +115,4 @@ class Client {
         this.age = age;
     }
     
-    //Рекурсивний метод
-    void recursiveMethod(int iterations, String message) {
-        if (iterations > 0) {
-            System.out.println(message);
-            recursiveMethod(iterations - 1, message);
-        }
-    }
 }
