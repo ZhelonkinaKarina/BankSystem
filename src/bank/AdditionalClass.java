@@ -3,11 +3,11 @@ package bank;
 class AdditionalClass {
 	
 	//Статичні змінні з ініціалізацією під час оголошення та статичним блоком
-    private static int staticVariable1 = 10;
+    private static int staticVariable1 = 1300;
     private static int staticVariable2;
 
     static {
-        staticVariable2 = 20;
+        staticVariable2 = 890;
     }
 
     //Перший статичний метод
