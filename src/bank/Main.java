@@ -59,5 +59,18 @@ class Main {
     //Виклик методів
     finalVariablesClass.firstMethod();
     finalVariablesClass.secondMethod();
+    
+    //Створення екземпляру класу та виклик методу test()
+    OuterClass outerObject = new OuterClass();
+    outerObject.test();
+    
+    Account account6 = new Account("A123", "Вкладний (депозитний)", 20000.0);
+    Client client6 = new Client("Іван", 35, "Чоловіча", 50000.0);
+    Transaction transaction6 = new Transaction("T001", "Переказ коштів");
+
+    //Виклик нових методів
+    account.customLogicMethod();
+    client.customLogicMethod();
+    transaction.customLogicMethod();
 	}
 }
