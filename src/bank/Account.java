@@ -2,10 +2,10 @@ package bank;
 
 class Account {
 	//Змінні екземпляра класу
-	private String accountId;
+    private String accountId;
     private String accountType;
     private double balance;
-    
+
     //Конструктор
     Account(String accountId, String accountType, double balance) {
         this.accountId = accountId;
@@ -13,6 +13,10 @@ class Account {
         this.balance = balance;
     }
 
+    //Конструктор для використання з батьківського класу
+    Account(String accountId, String accountType) {
+        this(accountId, accountType, 0.0); //Виклик конструктора з параметрами
+    }
     
     //Методи з модифікатором доступу private
     private void deposit(double amount) { //Void метод
@@ -82,8 +86,7 @@ class Account {
     void displayInfo() {
         System.out.println("Клієнт №" + accountId + ", Тип рахунку: " + accountType + ", Баланс вкладного (депозитного) рахунку: " + balance);
     }
-    
-    
+     
     //Метод, що приймає екземпляр того ж класу в якості параметру
     void performOperations(Account otherAccount) {
         //Виклик методу із класу, екземпляр якого передано в параметр
@@ -93,5 +96,12 @@ class Account {
     double otherBalance = otherAccount.getBalance();
     System.out.println("Баланс іншого рахунку: " + otherBalance);
     }
+    
+    //Новий метод з власною логікою та використанням методу батьківського класу
+    void customLogicMethod() {
+        System.out.println("Власний метод класу Account");
+    	//Виклик методу батьківського класу
+        deposit(100.0);
 
+    }
 }
