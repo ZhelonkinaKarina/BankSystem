@@ -13,10 +13,55 @@ class Account {
         this.balance = balance;
     }
 
-    //Void-метод
-    void deposit(double amount) {
+    
+    //Методи з модифікатором доступу private
+    private void deposit(double amount) { //Void метод
         balance += amount;
         System.out.println("Поповнення коштів на депозитний рахунок у розмірі " + amount + " UAH клієнта №" + accountId + ". Оновлений баланс вкладного (депозитного) рахунку: " + balance);
+    }
+
+    private void deposit(int amount) { //Перевизначення методу
+        deposit((int) amount);
+    }
+
+    private Account updateAccount(double newBalance) {
+        this.balance = newBalance;
+        return this;
+    }
+    
+    //Допоміжні методи з модифікатором доступу public
+    public void depositPublic(double amount) {
+        deposit(amount);
+    }
+
+    public void depositPublic(int amount) {
+        deposit(amount);
+    }
+
+    public void performOperationsPublic(Account otherAccount) {
+        performOperations(otherAccount);
+    }
+
+    //Метод посилкового типу
+    public Account updateAccountPublic(double newBalance) {
+        return updateAccount(newBalance);
+    }
+    
+    //Модифікатори доступу та методи get() та set()
+    String getAccountId() {
+        return accountId;
+    }
+
+    void setAccountId(String accountId) {
+        this.accountId = accountId;
+    }
+
+    String getAccountType() {
+        return accountType;
+    }
+
+    void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
     
     //Типізований метод
@@ -29,14 +74,15 @@ class Account {
         this.balance = balance;
     }
 
+    //Метод, що дозволяє автоматично збільшувати значення balance удвічі
+    void setAndDoubleBalance(double balance) {
+        this.balance = balance * 2;
+    }
+    
     void displayInfo() {
         System.out.println("Клієнт №" + accountId + ", Тип рахунку: " + accountType + ", Баланс вкладного (депозитного) рахунку: " + balance);
     }
     
-    //Перевизначення методу
-    void deposit(int amount) {
-        deposit((int) amount);  
-    }
     
     //Метод, що приймає екземпляр того ж класу в якості параметру
     void performOperations(Account otherAccount) {
@@ -48,10 +94,4 @@ class Account {
     System.out.println("Баланс іншого рахунку: " + otherBalance);
     }
 
-    //Метод посилкового типу
-    Account updateAccount(double newBalance) {
-    // Логіка для оновлення об'єкта з новими значеннями змінних екземпляра класу
-    this.balance = newBalance;
-    return this;
-    }
 }
