@@ -4,7 +4,7 @@ class FinalVariablesClass {
 
 	//final змінні екземплярів класу
     private final int finalVariable1 = 5;
-    private final String finalVariable2 = "Hello";
+    private final String finalVariable2 = "Bank";
     private final double finalVariable3;
 
     //Конструктор для ініціалізації fina змінної під час створення об'єкта
@@ -20,7 +20,7 @@ class FinalVariablesClass {
     //Другий метод, що використовує локальні final змінні
     public void secondMethod() {
         final int localFinalVariable1 = 10;
-        final String localFinalVariable2 = "World";
+        final String localFinalVariable2 = "System";
 
         // Використання локальних final змінних
         System.out.println("Другий метод. Локальна змінна 1: " + localFinalVariable1 + ", Локальна змінна 2: " + localFinalVariable2);
