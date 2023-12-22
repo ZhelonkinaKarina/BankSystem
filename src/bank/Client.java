@@ -2,7 +2,7 @@ package bank;
 
 class Client {
 	//Змінні екземпляра класу
-	private String name;
+    private String name;
     private int age;
     private String sex;
     private double balance;
@@ -13,6 +13,11 @@ class Client {
         this.age = age;
         this.sex = sex;
         this.balance = balance;
+    }
+
+    //sКонструктор для використання з батьківського класу
+    Client(String name, int age, String sex) {
+        this(name, age, sex, 0.0); //Виклик конструктора з параметрами
     }
     
     //Методи з модифікатором доступу private
@@ -85,7 +90,6 @@ class Client {
         System.out.println("Клієнт: " + name + ", Вік: " + age + ", Стать: " + sex + ", Баланс поточного рахунку: " + balance);
     }
     
-    
     //Перевизначення конструктора
     Client(String name, int age, String sex, double balance, boolean withDiscount) {
         this.name = name;
@@ -113,6 +117,13 @@ class Client {
         this.balance = withDiscount ? balance * 0.95 : balance;  //Застосовуємо знижку
         this.sex = sex;
         this.age = age;
+    }
+        
+     //Новий метод з власною логікою та використанням методу батьківського класу
+        void customLogicMethod() {
+            System.out.println("Власний метод класу Client");
+            //Виклик методу батьківського класу
+            setBalance(getBalance() - 50.0);
     }
     
 }
