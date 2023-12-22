@@ -2,7 +2,7 @@ package bank;
 
 class Transaction {
 	//Змінні екземпляра класу
-	private String transactionId;
+    private String transactionId;
     private String description;
 
     //Конструктор
@@ -10,8 +10,13 @@ class Transaction {
         this.transactionId = transactionId;
         this.description = description;
     }
+
+    //Конструктор для використання з батьківського класу
+    Transaction(String transactionId) {
+        this(transactionId, ""); //Виклик конструктора з параметрами
+    }
     
- // Метод з модифікатором доступу private
+    //Метод з модифікатором доступу private
     private void executeTransaction(Client client, double amount) {
         double currentBalance = client.getBalance();
         if (currentBalance >= amount) {
@@ -47,5 +52,12 @@ class Transaction {
     //Перевантаження методу
     static void printTransactionInfo(String transactionId, String description) {
         System.out.println("ID транзикції : " + transactionId + ", Опис: " + description);
+    }
+        
+     //Новий метод з власною логікою та використанням методу батьківського класу
+        void customLogicMethod() {
+            System.out.println("Власний метод класу Transaction");
+            //Виклик методу батьківського класу
+            executeTransaction(new Client("Іван", 35, "Чоловіча", 50000.0), 200.0);
     }
 }
