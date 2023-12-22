@@ -10,9 +10,9 @@ class Transaction {
         this.transactionId = transactionId;
         this.description = description;
     }
-
-    //Void-метод
-    void executeTransaction(Client client, double amount) {
+    
+ // Метод з модифікатором доступу private
+    private void executeTransaction(Client client, double amount) {
         double currentBalance = client.getBalance();
         if (currentBalance >= amount) {
             client.setBalance(currentBalance - amount);
@@ -20,6 +20,28 @@ class Transaction {
         } else {
             System.out.println("Транзакція " + transactionId + ": Недостатньо коштів. Операцію перервано!");
         }
+    }
+
+    // Допоміжний метод з модифікатором доступу public
+    public void executeTransactionPublic(Client client, double amount) {
+        executeTransaction(client, amount);
+    }
+    
+    //Модифікатори доступу та методи get() та set()
+    String getTransactionId() {
+        return transactionId;
+    }
+
+    void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    String getDescription() {
+        return description;
+    }
+
+    void setDescription(String description) {
+        this.description = description;
     }
     
     //Перевантаження методу
