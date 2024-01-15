@@ -1,6 +1,6 @@
 package bank;
 
-class Client {
+class Client extends BankObject {
 	//Змінні екземпляра класу
     private String name;
     private int age;
@@ -126,4 +126,7 @@ class Client {
             setBalance(getBalance() - 50.0);
     }
     
+        void process() {
+            System.out.println("Метод суперкласу для Client");
+        }
 }
