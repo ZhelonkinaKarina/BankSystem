@@ -1,6 +1,6 @@
 package bank;
 
-class Account {
+class Account extends BankObject {
 	//Змінні екземпляра класу
     private String accountId;
     private String accountType;
@@ -102,6 +102,10 @@ class Account {
         System.out.println("Власний метод класу Account");
     	//Виклик методу батьківського класу
         deposit(100.0);
-
+        
+    }
+    
+    void process() {
+        System.out.println("Метод суперкласу для Account");
     }
 }
