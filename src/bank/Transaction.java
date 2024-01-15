@@ -1,6 +1,6 @@
 package bank;
 
-class Transaction {
+class Transaction extends BankObject {
 	//Змінні екземпляра класу
     private String transactionId;
     private String description;
@@ -59,5 +59,8 @@ class Transaction {
             System.out.println("Власний метод класу Transaction");
             //Виклик методу батьківського класу
             executeTransaction(new Client("Іван", 35, "Чоловіча", 50000.0), 200.0);
+    }
+        void process() {
+            System.out.println("Метод суперкласу для Transaction");
     }
 }
