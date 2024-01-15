@@ -72,5 +72,15 @@ class Main {
     account.customLogicMethod();
     client.customLogicMethod();
     transaction.customLogicMethod();
+    
+    Dispatcher dispatcher = new Dispatcher();
+    dispatcher.dispatch(account);
+    dispatcher.dispatch(client);
+    dispatcher.dispatch(transaction);
+
+    //Викликаємо final метод через створений екземпляр класу
+    SomeClass someClass = new SomeClass();
+    someClass.finalMethod();
 	}
 }
+
